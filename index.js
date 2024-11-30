@@ -5,7 +5,6 @@ let navbar = document.querySelector('.navbar');
 menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-
 }
 
 /* scroll sections active link  */
@@ -57,4 +56,40 @@ const typed = new Typed('.multiple-text', {
     backSpeed: 100,
     backDelay: 1000,
     loop: true
+});
+
+/* Contact Form JS */
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+// Add an event listener to handle form submission
+contactForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Collect input values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Validation logic
+    if (!name || !email || !mobile || !subject || !message) {
+        formStatus.textContent = "All fields are required.";
+        formStatus.style.color = "red";
+        return;
+    }
+
+    // Simulate form submission (you can replace this with an actual API call)
+    formStatus.textContent = "Sending message...";
+    formStatus.style.color = "blue";
+
+    // Simulating a delay for user feedback
+    setTimeout(() => {
+        formStatus.textContent = "Message sent successfully! I'll get back to you soon.";
+        formStatus.style.color = "green";
+
+        // Optionally reset the form after submission
+        contactForm.reset();
+    }, 1500);
 });
